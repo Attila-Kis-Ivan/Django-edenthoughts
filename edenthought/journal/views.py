@@ -7,8 +7,6 @@ def homepage(request):
 
 
 
-
-
 def register(request):
     
     form = CreateUserForm()
@@ -21,8 +19,9 @@ def register(request):
             
             return redirect('my-login')
     
+    context = {'RegistrationForm': form}
     
-    return render(request, 'journal/register.html')
+    return render(request, 'journal/register.html', context)
 
 
 
