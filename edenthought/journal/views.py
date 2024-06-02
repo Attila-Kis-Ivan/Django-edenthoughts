@@ -6,6 +6,8 @@ from django.contrib.auth.models import auth
 
 from django.contrib.auth import authenticate, login, logout
 
+from django.contrib.auth.decorators import login_required
+
 def homepage(request):
     return render(request, 'journal/index.html')
 
@@ -53,6 +55,18 @@ def my_login(request):
     return render(request, 'journal/my-login.html', context)
 
 
+def user_logout(request):
+     
+    auth.logout(request)
+    
+    return redirect("")
+
+
+
+
+
+
+@login_required(login_url='my-login')
 def dashboard(request):
     return render(request, 'journal/dashboard.html')
 
