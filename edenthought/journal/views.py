@@ -60,11 +60,7 @@ def user_logout(request):
     auth.logout(request)
     
     return redirect("")
-
-
-
-
-
+ 
 
 @login_required(login_url='my-login')
 def dashboard(request):

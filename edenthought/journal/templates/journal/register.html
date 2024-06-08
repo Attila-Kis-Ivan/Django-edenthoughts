@@ -1,33 +1,40 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
 
 <html>
 
     <head>
         <title>Edenthought | Register</title>
-    </head>
+         <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
 
-    <div class="container">
+         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout">
 
         <h3> Create your account </h3>
 
         <h5>Share your thoughts today! </h5>
 
         <br>
-        <br>
+  
 
         <form method='POST' autocomplete="off">
 
             {% csrf_token %}
 
-            {{RegistrationForm.as_p}}
+            {{RegistrationForm|crispy}}
 
             <br> <br>
             
-            <button type="submit"> Create account</button>
+            <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Create account</button>
 
         </form>
 
     </div>
-
+    <br>
 </html>
 
 
