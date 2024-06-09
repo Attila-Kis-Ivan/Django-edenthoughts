@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
+from django.contrib import messages
+
 def homepage(request):
     return render(request, 'journal/index.html')
 
@@ -22,9 +24,11 @@ def register(request):
         if form.is_valid():
             form.save()
             
+            messages.success(request, "User created!")
+            
             return redirect('my-login')
     
-    context = {'RegistrationForm': form}
+    context = {'RegistrationForm': form} 
     
     return render(request, 'journal/register.html', context)
 
@@ -46,7 +50,7 @@ def my_login(request):
             
             if user is not None:
                 auth.login(request, user)
-                
+                              
                 return redirect('dashboard')
         
     

@@ -1,9 +1,12 @@
 .form-layout{
 
     border-radius: 20px;
-    /* min-width: 40vw;
-    max-width: 60vw; */
+
     width: 40vw;
 }
 
+.message-text{
+    color: white;
+
+}
 
