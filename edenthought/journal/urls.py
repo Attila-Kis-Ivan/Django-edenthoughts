@@ -13,6 +13,7 @@ urlpatterns = [
     path('my-thoughts', views.my_thoughts, name='my-thoughts'),
     # to make the url dinamic we need to add /<str:pk> (pk stands for primary key)
     path('update-thought/<str:pk>', views.update_thought, name='update-thought'),
+    path('delete-thought/<str:pk>', views.delete_thought, name='delete-thought'),
 
     
 ]
