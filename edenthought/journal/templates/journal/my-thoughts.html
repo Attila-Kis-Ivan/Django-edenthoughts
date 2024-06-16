@@ -18,6 +18,10 @@
         <br>
 
         {{thought.user}}
+        <br>
+        <br>
+
+        <a href="{% url 'update-thought' thought.id %}">Update thought</a>
     </div>    
     <br>
    {% endfor %}
