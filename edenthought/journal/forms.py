@@ -20,10 +20,6 @@ class ThoughtForm(ModelForm):
         # user is a forign key and needs to be included
         exclude = ['user',]
     
-    
-    
-    
-     
  
 
  
