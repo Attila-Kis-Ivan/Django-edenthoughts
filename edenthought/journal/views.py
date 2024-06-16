@@ -114,8 +114,14 @@ def my_thoughts(request):
 @login_required(login_url='my-login')
 def update_thought(request, pk):
     
-    thought = Thought.objects.get(id=pk)
-    
+    # user=request.user to link user to the related thought,try except block to handling error
+    try:
+        
+     thought = Thought.objects.get(id=pk, user=request.user)
+     
+    except:
+        return redirect('my-thoughts')
+        
     form = ThoughtForm(instance=thought)
     
     if request.method == 'POST':
