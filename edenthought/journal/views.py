@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.models import User
+
 from . forms import CreateUserForm, LoginForm, ThoughtForm, UpdateUserForm
 
 from django.contrib.auth.models import auth
@@ -168,6 +170,23 @@ def profile_management(request):
     context = {'ProfileForm': form}
     
     
-    
-    
     return render(request, 'journal/profile-management.html', context)
+
+
+
+@login_required(login_url='my-login')
+def delete_account(request):
+    
+    if request.method == 'POST':
+        
+        deletUser = User.objects.get(username = request.user)
+        
+        deletUser.delete()
+        
+        return redirect("")
+    
+    
+    
+    
+    
+    return render(request, 'journal/delete-account.html',)
