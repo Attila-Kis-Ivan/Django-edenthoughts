@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth.models import User
 
-from . forms import CreateUserForm, LoginForm, ThoughtForm, UpdateUserForm
+from . forms import CreateUserForm, LoginForm, ThoughtForm, UpdateUserForm, UpdateProfileForm
 
 from django.contrib.auth.models import auth
 
@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
-from . models import Thought
+from . models import Thought, Profile
 
 
 def homepage(request):
@@ -27,10 +27,18 @@ def register(request):
         form = CreateUserForm(request.POST)
         
         if form.is_valid():
+            
+            # user object gonna be created
+            current_user = form.save(commit=False)
+            
             form.save()
+            
+            # we create a new object and want to assign the user which is the foreign key 
+            profile = Profile.objects.create(user=current_user)
             
             messages.success(request, "User created!")
             
+                       
             return redirect('my-login')
     
     context = {'RegistrationForm': form} 
@@ -73,7 +81,13 @@ def user_logout(request):
 
 @login_required(login_url='my-login')
 def dashboard(request):
-    return render(request, 'journal/dashboard.html')
+    
+    # we want to check the user in the database is matching with the user currently logged in
+    profile_pic = Profile.objects.get(user=request.user)
+    
+    context = {'profilePic' : profile_pic}
+    
+    return render(request, 'journal/dashboard.html', context)
 
 @login_required(login_url='my-login')
 def create_thought(request):
