@@ -13,7 +13,7 @@
             <form method='POST' autocomplete="off">
             {% csrf_token %}
 
-            {{ProfileForm|crispy}}
+            {{UserUpdateForm|crispy}}
 
             <br> <br>
             <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Update </button>
@@ -22,6 +22,29 @@
 </div>    
 
 <br>
+
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h1> Update profile photo </h1>
+    <br>
+    <br>
+    <br>
+
+        <form method='POST' autocomplete="off" enctype="multipart/form-data">
+
+            
+            {% csrf_token %}
+
+            {{ProfileUpdateForm|crispy}}
+
+            <br> <br>
+            <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Upload profile picture </button>
+
+        </form>
+</div>    
+
+
+<br>
+
 <div class="container bg-white shadow-md p-5 form-layout">
     <h3> Delete your account</h3>
     <br>

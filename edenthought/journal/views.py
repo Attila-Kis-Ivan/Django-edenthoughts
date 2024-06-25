@@ -173,15 +173,31 @@ def profile_management(request):
     
     form = UpdateUserForm(instance=request.user)
     
+    profile = Profile.objects.get(user=request.user)
+    
+    form_2 = UpdateProfileForm(instance=profile)
+    
+    
     if request.method == 'POST':
         form = UpdateUserForm(request.POST, instance=request.user)
+        
+        form_2 = UpdateProfileForm(request.POST, request.FILES, instance=profile)
     
         if form.is_valid():
             
             form.save()
             
             return redirect('dashboard')
-    context = {'ProfileForm': form}
+        
+        if form_2.is_valid():
+            
+            form_2.save()
+            
+            return redirect('dashboard')
+        
+        
+        
+    context = {'UserUpdateForm': form, 'ProfileUpdateForm': form_2}
     
     
     return render(request, 'journal/profile-management.html', context)
