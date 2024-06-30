@@ -162,8 +162,7 @@ def delete_thought(request, pk):
     if request.method == 'POST':
         thought.delete()
         
-        return redirect('my-thoughts')
-    
+        return redirect('my-thoughts')   
     
     return render(request, 'journal/delete-thought.html')
 
@@ -194,11 +193,8 @@ def profile_management(request):
             form_2.save()
             
             return redirect('dashboard')
-        
-        
-        
-    context = {'UserUpdateForm': form, 'ProfileUpdateForm': form_2}
     
+    context = {'UserUpdateForm': form, 'ProfileUpdateForm': form_2}
     
     return render(request, 'journal/profile-management.html', context)
 
