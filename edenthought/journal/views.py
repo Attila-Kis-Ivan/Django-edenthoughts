@@ -14,6 +14,10 @@ from django.contrib import messages
 
 from . models import Thought, Profile
 
+from django.core.mail import send_mail
+
+from django.conf import settings
+
 
 def homepage(request):
     return render(request, 'journal/index.html')
@@ -31,6 +35,8 @@ def register(request):
             current_user = form.save(commit=False)
             
             form.save()
+            
+            send_mail("Welcome to Edenthought!", "Congratulations on creating your account", settings.DEFAULT_FROM_EMAIL, [current_user.email] )
             
             # we create a new object and want to assign the user which is the foreign key to the current_user
             
