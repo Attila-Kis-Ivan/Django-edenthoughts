@@ -25,18 +25,18 @@ urlpatterns = [
 
     #  1 - Allow us to enter our email in order to receive a password reset link
     
-    path('reset_password', auth_views.PasswordResetView.as_view(), name='reset_pasword'),
+    path('reset_password', auth_views.PasswordResetView.as_view(template_name="journal/password-reset.html"), name='reset_pasword'),
 
     #  2 - Show a success message stating that an email was sent to reset our password
     
-    path('reset_password_sent', auth_views.PasswordResetDoneView.as_view(), name="pasword_reset_done"),
+    path('reset_password_sent', auth_views.PasswordResetDoneView.as_view(template_name="journal/password-reset-sent.html"), name="password_reset_done"),
     
     # 3 - Send a link to our email, to reset our password
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="journal/password-reset-form.html"), name="password_reset_confirm"),
     
     # 4 - Show a success message that our password was changed 
     
-    path('password_reset_complete', auth_views.PasswordResetCompleteView.as_view(), name="password_reset")
+    path('password_reset_complete', auth_views.PasswordResetCompleteView.as_view(template_name="journal/password-reset-complete.html"), name="password_reset_complete"),
     
     
     
