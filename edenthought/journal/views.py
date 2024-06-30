@@ -28,12 +28,12 @@ def register(request):
         
         if form.is_valid():
             
-            # user object gonna be created
             current_user = form.save(commit=False)
             
             form.save()
             
-            # we create a new object and want to assign the user which is the foreign key 
+            # we create a new object and want to assign the user which is the foreign key to the current_user
+            
             profile = Profile.objects.create(user=current_user)
             
             messages.success(request, "User created!")
