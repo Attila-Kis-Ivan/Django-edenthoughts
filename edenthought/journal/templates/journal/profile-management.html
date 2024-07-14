@@ -2,6 +2,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+    <head>
+        <title>Edenthought | Profile management</title>
+    </head>
 <br>
 
 <div class="container bg-white shadow-md p-5 form-layout">
@@ -16,7 +19,7 @@
             {{UserUpdateForm|crispy}}
 
             <br> <br>
-            <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Update </button>
+            <button class="btn btn-outline-primary btn-md w-100 btn-block p-2" type="submit"> Update </button>
 
         </form>
 </div>    
@@ -37,7 +40,7 @@
             {{ProfileUpdateForm|crispy}}
 
             <br> <br>
-            <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Upload profile picture </button>
+            <button class="btn btn-outline-primary btn-md w-100 btn-block p-2" type="submit"> Upload profile picture </button>
 
         </form>
 </div>    

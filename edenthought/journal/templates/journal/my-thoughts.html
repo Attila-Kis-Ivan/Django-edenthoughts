@@ -1,6 +1,20 @@
 {% extends "journal/navbar.html" %}
+{% load static %}
 
 {% block content %}
+
+        {% for message in messages %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}          
+                <p id="message-timer" class="alert alert-success float-center text-center message-text"> <i class="fa fa-check" aria-hidden="true"></i>&nbsp; {{message}} </p>
+            {% endif %}
+        {% endfor %}
+
+
+    <head>
+        <title>Edenthought | My thoughts</title>
+    </head>
+
     <br>
     {%for thought in AllThoughts %}
 
@@ -14,17 +28,22 @@
         <br>
         <br>
 
-        {{thought.user}}
+         By {{thought.user}}
         <br>
         <br>
 
-        <a href="{% url 'update-thought' thought.id %}">Update thought</a>
+        <a class="btn btn-outline-primary btn-md w-100 btn-block p-2"  href="{% url 'update-thought' thought.id %}">Update</a>
         <br>
         <br>
-        <a href="{% url 'delete-thought' thought.id %}">Delete thought</a>
+        
+        <a class="btn btn-outline-danger btn-md w-100 btn-block p-2" href="{% url 'delete-thought' thought.id %}">Delete</a>
     </div>    
     <br>
    {% endfor %}
+
+   <br>
+   <script src="{% static 'js/app.js' %}"></script>
+
 
 {% endblock %}
 

@@ -2,6 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+    <head>
+        <title>Edenthought | Create thought</title>
+    </head>
+
 <br>
 
 <div class="container bg-white shadow-md p-5 form-layout">
@@ -16,7 +21,7 @@
             {{CreateThoughtForm|crispy}}
 
             <br> <br>
-            <button class="btn btn-secondary btn-md w-100 btn-block p-2" type="submit"> Create a thought </button>
+            <button class="btn btn-outline-primary btn-md w-100 btn-block p-2" type="submit"> <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Create a thought </button>
 
         </form>
 </div>    
