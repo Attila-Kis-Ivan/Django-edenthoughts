@@ -1,4 +1,4 @@
-#!/Users/attilakis-ivan/Desktop/dev2/.venv/bin/python3.12
+#!/Users/attilakis-ivan/Desktop/Django-edenthoughts/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
